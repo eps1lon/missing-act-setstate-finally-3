@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
@@ -12,8 +12,10 @@ describe("app", () => {
       screen.getByText("It is on");
     });
 
-    await new Promise((resolve) => {
-      setTimeout(resolve, 300);
+    await act(async () => {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 300);
+      });
     });
   });
 });
